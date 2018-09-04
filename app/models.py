@@ -5,7 +5,7 @@ from flask_login import UserMixin
 
 
 #######################################
-#   id
+#   id -  pk
 #     category
 #     title
 #     subtitle
@@ -22,7 +22,7 @@ class Job(db.Model):
     subtitle = db.Column(db.String(140))
     location = db.Column(db.String(140))
     period = db.Column(db.String(140))
-    description = db.Column(db.String(140))
+    description = db.Column(db.String(1024))
 
     def __repr__(self):
         return '<Job {}>'.format(self.title)

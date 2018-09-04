@@ -4,7 +4,7 @@
 # https://docs.docker.com/network/links/
 
 from app import app, db
-from app.models import User, Post
+from app.models import Job
 
 @app.shell_context_processor
 def make_shell_context():
