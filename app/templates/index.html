@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    <div>
+        Microblog:
+        <a href="/index">Home</a>
+        <a href="/login">Login</a>
+        <a href="/addjob">Add Job</a>
+    </div>
+
     <h1>Hi, you!</h1>
 
     {% for job in jobs %}
     <div>
         <p>
-            {{ job.category }} <b>{{ job.title }}</b>
+            {{ job.category }}
         </p>
+        <p>
+            <b>{{ job.title }}</b>
+        </p>
+        <p>{{ job.subtitle }}</p>
+        <hr>
     </div>
     {% endfor %}
 

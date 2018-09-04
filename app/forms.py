@@ -7,3 +7,12 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+class JobPostForm(FlaskForm):
+    category = StringField('Category', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()])
+    #subtitle = StringField('Subtitle', validators=[DataRequired()])
+    #location = StringField('Location', validators=[DataRequired()])
+    #period = StringField('Period', validators=[DataRequired()])
+    #description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('+')
