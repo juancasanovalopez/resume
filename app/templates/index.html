@@ -2,13 +2,6 @@
 
 {% block content %}
 
-    <div>
-        Microblog:
-        <a href="/index">Home</a>
-        <a href="/login">Login</a>
-        <a href="/addjob">Add Job</a>
-    </div>
-
     <h1>Hi, you!</h1>
 
     {% for job in jobs %}
@@ -20,6 +13,7 @@
             <b>{{ job.title }}</b>
         </p>
         <p>{{ job.subtitle }}</p>
+        <a href="{{ url_for('edit') }}">Edit</a>
         <hr>
     </div>
     {% endfor %}

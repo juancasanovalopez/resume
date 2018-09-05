@@ -7,6 +7,15 @@
         {% endif %}
     </head>
     <body>
-        {% block content %}{% endblock %}
+
+        <div>
+            +++++:
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('jobform') }}">Add Job</a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
     </body>
 </html>

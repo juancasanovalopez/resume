@@ -3,6 +3,9 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+# flask db migrate -m "Modes table"
+# flask db upgrade
+#
 
 #######################################
 #   id -  pk
@@ -27,3 +30,10 @@ class Job(db.Model):
 
     def __repr__(self):
         return '<Job {}>'.format(self.title)
+
+class Mode(db.Model):
+    view = db.Column(db.Boolean, primary_key=True)
+    edit = db.Column(db.Boolean)
+
+    def __repr__(self):
+        return '<Mode {}>'.format(self.title)
