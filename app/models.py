@@ -31,9 +31,10 @@ class Job(db.Model):
     def __repr__(self):
         return '<Job {}>'.format(self.title)
 
-class Mode(db.Model):
-    view = db.Column(db.Boolean, primary_key=True)
-    edit = db.Column(db.Boolean)
+class Me(db.Model):
+    Name = db.Column(db.String(140), primary_key=True)
+    email = db.Column(db.String(60))
+    phone = db.Column(db.String(60))
 
     def __repr__(self):
-        return '<Mode {}>'.format(self.title)
+        return '<Me {}>'.format(self.Name)

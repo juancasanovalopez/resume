@@ -3,12 +3,23 @@ from app import app, db
 from app.forms import LoginForm, JobPostForm
 from app.models import Job
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 def index():
     #user = {'username': 'r2'}
     jobs = Job.query.all()
-    return render_template('index.html', title='Home', jobs=jobs)
+
+    mode = '0'
+
+    if request.method == 'POST':
+        mode = request.form['mode']
+
+    return render_template('index.html',
+                           title='Home',
+                           jobs=jobs,
+                           mode=mode)
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

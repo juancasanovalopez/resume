@@ -2,20 +2,44 @@
 
 {% block content %}
 
-    <h1>Hi, you!</h1>
+    <h1>Hi, you! {{ mode }}</h1>
 
-    {% for job in jobs %}
-    <div>
-        <p>
-            {{ job.category }}
-        </p>
-        <p>
-            <b>{{ job.title }}</b>
-        </p>
-        <p>{{ job.subtitle }}</p>
-        <a href="{{ url_for('edit') }}">Edit</a>
-        <hr>
-    </div>
-    {% endfor %}
+
+
+    {% if mode == '0' %}
+
+        {% for job in jobs %}
+            <!-- filter by cat -->
+            <div>
+                <p>
+                    {{ job.category }}
+                </p>
+                <p>
+                    <b>VIEW MODE</b>
+                </p>
+
+                <hr>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
+        {% for job in jobs %}
+            <div>
+                <p>
+                    {{ job.category }}
+                </p>
+                <p>
+                    <b>{{ job.title }}</b>
+                </p>
+                <p>
+                    {{ job.subtitle }}
+                </p>
+                <a href="{{ url_for('edit') }}">Edit</a>
+                <hr>
+            </div>
+        {% endfor %}
+
+    {% endif%}
 
 {% endblock %}

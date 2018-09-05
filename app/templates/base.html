@@ -13,6 +13,19 @@
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('jobform') }}">Add Job</a>
+
+            {% if mode == '0' %}
+                <form method="POST">
+                  <input type="hidden" name="mode" value="1">
+                  <input type="submit" value="to EDIT">
+                </form>
+            {% else %}
+                <form method="POST">
+                  <input type="hidden" name="mode" value="0">
+                  <input type="submit" value="to VIEW">
+                </form>
+            {% endif %}
+
         </div>
 
         {% block content %}
