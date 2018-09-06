@@ -2,6 +2,8 @@
 # http://ondras.zarovi.cz/sql/demo/
 # https://medium.com/@charlie.b.ohara/building-a-flask-rest-api-with-docker-94ca4219f460
 # https://docs.docker.com/network/links/
+# https://www.codementor.io/garethdwyer/building-a-crud-application-with-flask-and-sqlalchemy-dm3wv7yu2
+
 # set FLASK_APP=resume.py
 # export FLASK_PP=resume.py
 

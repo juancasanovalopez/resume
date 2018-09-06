@@ -1,15 +1,13 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - microblog</title>
+            <title>{{ title }} - microblog</title>
         {% else %}
-        <title>microblog</title>
+            <title>microblog</title>
         {% endif %}
     </head>
     <body>
-
         <div>
-            +++++:
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('jobform') }}">Add Job</a>
@@ -25,9 +23,7 @@
                   <input type="submit" value="to VIEW">
                 </form>
             {% endif %}
-
         </div>
-
         {% block content %}
         {% endblock %}
     </body>

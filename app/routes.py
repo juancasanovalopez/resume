@@ -6,11 +6,13 @@ from app.models import Job
 @app.route('/', methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
 def index():
-    #user = {'username': 'r2'}
+    # Get the list of positions
     jobs = Job.query.all()
 
+    # Set mode to view
     mode = '0'
 
+    # user wants to edit
     if request.method == 'POST':
         mode = request.form['mode']
 
@@ -18,8 +20,6 @@ def index():
                            title='Home',
                            jobs=jobs,
                            mode=mode)
-
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -46,22 +46,19 @@ def jobform():
         return redirect(url_for('index'))
     return render_template('jobform.html', title='+', form=form)
 
-@app.route('/edit',methods=['GET','POST'])
-def edit():
-    form = JobPostForm()
-    job = Job.query.get(1)
+@app.route("/update", methods=['POST'])
+def update():
+    newcategory = request.form['newcategory']
+    job_id = request.form['id']
+    job = Job.query.filter_by(id=job_id).first()
+    job.category = newcategory
+    db.session.commit()
+    return redirect(url_for('index'))
 
-    form.category.data = job.category
-    form.title.data = job.title
-    form.subtitle.data = job.subtitle
-    form.location.data = job.location
-    form.period.data = job.period
-    form.description.data = job.description
-
-    if request.method == 'POST':
-
-        db.session.commit()
-        flash('Updated fields')
-        return redirect(url_for('index'))
-
-    return render_template('jobform.html', title='+', form=form)
+@app.route("/delete", methods=["POST"])
+def delete():
+    job_id = request.form['id']
+    job = Job.query.filter_by(id=job_id).first()
+    db.session.delete(job)
+    db.session.commit()
+    return redirect("/")

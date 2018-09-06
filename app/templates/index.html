@@ -2,14 +2,12 @@
 
 {% block content %}
 
-    <h1>Hi, you! {{ mode }}</h1>
-
-
+    <h1>Hi, you!</h1>
 
     {% if mode == '0' %}
 
         {% for job in jobs %}
-            <!-- filter by cat -->
+            <!-- filter by cat (not the animal) -->
             <div>
                 <p>
                     {{ job.category }}
@@ -26,16 +24,19 @@
 
         {% for job in jobs %}
             <div>
-                <p>
-                    {{ job.category }}
-                </p>
-                <p>
-                    <b>{{ job.title }}</b>
-                </p>
-                <p>
-                    {{ job.subtitle }}
-                </p>
-                <a href="{{ url_for('edit') }}">Edit</a>
+                <p>{{job.category}}</p>
+                <form method="POST" action="./update">
+                    <input type="hidden" value='{{ job.id }}' name="id">
+                    <input type="text" value='{{ job.category }}' name="newcategory">
+
+                    <p>
+                        <input type="submit" value="Update">
+                    </p>
+                </form>
+                <form method="POST" action="./delete">
+              <input type="hidden" value="{{ job.id }}" name="id">
+              <input type="submit" value="Delete">
+            </form>
                 <hr>
             </div>
         {% endfor %}
