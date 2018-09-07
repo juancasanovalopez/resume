@@ -4,11 +4,7 @@
     <list default="true" id="98b00259-4cfc-4f0e-aab1-aa377bb47bf4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app.db" afterPath="$PROJECT_DIR$/app.db" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" afterPath="$PROJECT_DIR$/app/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/app/routes.py" afterPath="$PROJECT_DIR$/app/routes.py" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change beforePath="$PROJECT_DIR$/app/templates/index.html" afterPath="$PROJECT_DIR$/app/templates/index.html" />
-      <change beforePath="$PROJECT_DIR$/app/templates/jobform.html" afterPath="$PROJECT_DIR$/app/templates/jobform.html" />
       <change beforePath="$PROJECT_DIR$/resume.py" afterPath="$PROJECT_DIR$/resume.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,11 +62,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+                <state relative-caret-position="792">
+                  <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -86,13 +82,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="resume.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="resume.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resume.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+                <state relative-caret-position="144">
+                  <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
                   <folding>
-                    <element signature="e#406#429#0" expanded="true" />
+                    <element signature="e#440#463#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -171,12 +167,12 @@
         <option value="$PROJECT_DIR$/app/templates/addjob.html" />
         <option value="$PROJECT_DIR$/app/forms.py" />
         <option value="$PROJECT_DIR$/app/models.py" />
-        <option value="$PROJECT_DIR$/resume.py" />
         <option value="$PROJECT_DIR$/app/templates/jobform.html" />
         <option value="$PROJECT_DIR$/app/templates/index.html" />
         <option value="$PROJECT_DIR$/app/routes.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
+        <option value="$PROJECT_DIR$/resume.py" />
       </list>
     </option>
   </component>
@@ -336,7 +332,7 @@
         <state relative-caret-position="72">
           <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="40" />
           <folding>
-            <element signature="e#406#429#0" expanded="true" />
+            <element signature="e#440#463#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -424,7 +420,7 @@
         <state relative-caret-position="72">
           <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="40" />
           <folding>
-            <element signature="e#406#429#0" expanded="true" />
+            <element signature="e#440#463#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -520,7 +516,7 @@
         <state relative-caret-position="72">
           <caret line="3" column="40" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
           <folding>
-            <element signature="e#406#429#0" expanded="true" />
+            <element signature="e#440#463#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -598,7 +594,7 @@
         <state relative-caret-position="96">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding>
-            <element signature="e#406#429#0" expanded="true" />
+            <element signature="e#440#463#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -719,16 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resume.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding>
-            <element signature="e#406#429#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -749,9 +735,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="792">
+          <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resume.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#440#463#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
