@@ -1,56 +1,161 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
+<div class="container">
+    <div class="row">
+        <h1>Add Item</h1>
+    </div> <!-- row -->
 
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <form method="post">
+                {{ form.hidden_tag() }}
 
-    <form method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.category.label }}<br>
-            {{ form.category(size=32) }}<br>
+                <div class="mb-3">
+                    <label>{{ form.category.label }}</label>
+                    <input type="text" class="form-control" name="category">
+                    {% for error in form.category.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>{{ form.title.label }}</label>
+                        <input type="text" class="form-control" name="title">
+                        {% for error in form.title.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>{{ form.subtitle.label }}</label>
+                        <input type="text" class="form-control" name="subtitle">
+                        {% for error in form.subtitle.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>{{ form.location.label }}</label>
+                        <input type="text" class="form-control" name="location">
+                        {% for error in form.location.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>{{ form.period.label }}</label>
+                        <input type="text" class="form-control" name="period">
+                        {% for error in form.period.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>{{ form.description.label }}</label>
+                    <textarea class="form-control" name="description" rows="5"></textarea>
+                    {% for error in form.description.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="col-md-6 mb-3"></div>
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-success btn-lg btn-block" type="submit" name="submit">Add</button>
+                    </div>
+                </div> <!-- row -->
+            </form>
+        </div>
+    </div>
+       <!-- <div class="row">
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.category.label }}<br>
+                    {{ form.category() }}<br>
 
-            {% for error in form.category.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-
-
+                    {% for error in form.category.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
         <p>
             {{ form.title.label }}<br>
-            {{ form.title(size=32) }}<br>
+            {{ form.title() }}<br>
             {% for error in form.title.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.subtitle.label }}<br>
             {{ form.subtitle(size=32) }}<br>
             {% for error in form.subtitle.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.location.label }}<br>
             {{ form.location(size=32) }}<br>
             {% for error in form.location.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.period.label }}<br>
             {{ form.period(size=32) }}<br>
             {% for error in form.period.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.description.label }}<br>
             {{ form.description(cols=32,rows=4) }}<br>
             {% for error in form.description.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>
+            {{ form.submit() }}
+        </p>
     </form>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <div class="mb-3">
+                    <label>Category</label>
+                    <input type="text" class="form-control" value='' name="newcategory">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Company</label>
+                        <input type="text" class="form-control" value='' name="newtitle">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Position</label>
+                        <input type="text" class="form-control" value='' name="newsubtitle">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Location</label>
+                        <input type="text" class="form-control" value='' name="newlocation">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>When</label>
+                        <input type="text" class="form-control" value='' name="newperiod">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Description</label>
+                    <textarea class="form-control" value='' name="newdescription" rows="5"></textarea>
+                </div>
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="hidden" value='' name="id">
+                        <button class="btn btn-success btn-lg btn-block" type="submit" value="Update">Update</button>
+                    </div>
+                </div>
+            </div> -->
+</div> <!-- container -->
 {% endblock %}

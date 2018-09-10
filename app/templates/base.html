@@ -4,48 +4,32 @@
     {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
 {% endblock %}
 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/bootstrap.min.css')}}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{url_for('.static', filename='js/bootstrap.min.js')}}"></script>
+{{super()}}
+{% endblock %}
+
 {% block navbar %}
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Bottom navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropup">
-            <a class="nav-link dropdown-toggle" href="https://getbootstrap.com" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown10">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <nav class="navbar navbar-default">
        <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('jobform') }}">Add Job</a>
 
             {% if mode == '0' %}
                 <form method="POST">
-                  <input type="hidden" name="mode" value="1">
-                  <input type="submit" value="to EDIT">
+                    <input type="hidden" name="mode" value="1">
+                    <!--<input type="submit" value="to EDIT">-->
+                    <button class="btn btn-warning btn-lg btn-block" type="submit" value="to EDIT">to EDIT</button>
                 </form>
             {% else %}
                 <form method="POST">
-                  <input type="hidden" name="mode" value="0">
-                  <input type="submit" value="to VIEW">
+                    <input type="hidden" name="mode" value="0">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" value="to VIEW">to VIEW</button>
                 </form>
             {% endif %}
     </nav>
@@ -56,7 +40,9 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+                <div class="alert alert-info" role="alert">
+                    {{ message }}
+                </div>
             {% endfor %}
         {% endif %}
         {% endwith %}

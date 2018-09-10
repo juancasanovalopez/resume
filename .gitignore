@@ -4,3 +4,4 @@ __pycache__
 matrix
 /static
 .DS_Store
+app.db

@@ -1,35 +1,33 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, JobPostForm
+from app.forms import JobPostForm
 from app.models import Job
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
 def index():
-    # Get the list of positions
-    jobs = Job.query.all()
+    # filter by category
+    cat1 = 'hello'
+    cat2 = 'one'
+    jobs_by_cat1 = Job.query.filter_by(category=cat1).all()
+    jobs_by_cat2 = Job.query.filter_by(category=cat2).all()
 
-    # Set mode to view
+    # Set mode to view by default
     mode = '0'
 
     # user wants to edit
     if request.method == 'POST':
+
+        # get the mode value
         mode = request.form['mode']
 
     return render_template('index.html',
                            title='Home',
-                           jobs=jobs,
+                           jobs_by_cat1=jobs_by_cat1,
+                           jobs_by_cat2=jobs_by_cat2,
                            mode=mode)
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
-        return redirect(url_for('/index'))
-    return render_template('login.html', title='Sign In', form=form)
-
+# TODO Change to addPosition on next makeup
 @app.route('/jobform', methods=['GET','POST'])
 def jobform():
     form = JobPostForm()
@@ -48,17 +46,37 @@ def jobform():
 
 @app.route("/update", methods=['POST'])
 def update():
-    newcategory = request.form['newcategory']
-    job_id = request.form['id']
-    job = Job.query.filter_by(id=job_id).first()
-    job.category = newcategory
-    db.session.commit()
-    return redirect(url_for('index'))
 
-@app.route("/delete", methods=["POST"])
-def delete():
+    # Get job id from index.html
     job_id = request.form['id']
+
+    # Query the DB with the position id to update
     job = Job.query.filter_by(id=job_id).first()
-    db.session.delete(job)
-    db.session.commit()
-    return redirect("/")
+
+    if request.form['action'] == 'update':
+
+        # load updated data from index.html form
+        newcategory = request.form['newcategory']
+        newtitle = request.form['newtitle']
+        newsubtitle = request.form['newsubtitle']
+        newlocation = request.form['newlocation']
+        newperiod = request.form['newperiod']
+        newdescription = request.form['newdescription']
+
+        # Update row with the new data
+        job.category = newcategory
+        job.title = newtitle
+        job.subtitle = newsubtitle
+        job.location = newlocation
+        job.period = newperiod
+        job.description = newdescription
+
+        db.session.commit()
+
+    if request.form['action'] == 'delete':
+
+        # Delete the position row
+        db.session.delete(job)
+        db.session.commit()
+
+    return redirect(url_for('index'))
