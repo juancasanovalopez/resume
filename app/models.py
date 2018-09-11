@@ -6,7 +6,6 @@ from app import db
 
 # A model for Positions
 # TODO: Add url field
-# TODO: Add img_path field
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String())
@@ -26,6 +25,15 @@ class Me(db.Model):
     Name = db.Column(db.String(140), primary_key=True)
     email = db.Column(db.String(60))
     phone = db.Column(db.String(60))
+
+    def __repr__(self):
+        return '<Me {}>'.format(self.Name)
+
+# A model for social networks
+class Social(db.Model):
+    network = db.Column(db.String(140), primary_key=True)
+    username = db.Column(db.String(60))
+    url = db.Column(db.String(60))
 
     def __repr__(self):
         return '<Me {}>'.format(self.Name)
