@@ -9,28 +9,24 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Juan Casanova López</h2>
-                    <h3>juancasanovalopez@gmail.com</h3>
-                    <h3>+34 639-732-710</h3>
+                    <h2>{{ me.name }}</h2>
+                    <h3>{{ me.email }}</h3>
+                    <h3>{{ me.phone }}</h3>
                 </div>
             </div>
             <div class="row">
+                {% for socialnet in socialnets %}
                 <div class="col-md-3">
-                    <strong class="d-inline-block mb-2 text-primary">twitter</strong>
-                    <h4 class="mb-0">twitter</h4>
+                    <strong class="d-inline-block mb-2 text-primary">
+                        {{ socialnet.name }}
+                    </strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="{{ socialnet.url }}">
+                            {{ socialnet.username }}
+                        </a>
+                    </h3>
                 </div>
-                <div class="col-md-3">
-                    <strong class="d-inline-block mb-2 text-primary">twitter</strong>
-                    <h4 class="mb-0">twitter</h4>
-                </div>
-                <div class="col-md-3">
-                    <strong class="d-inline-block mb-2 text-primary">twitter</strong>
-                    <h4 class="mb-0">twitter</h4>
-                </div>
-                <div class="col-md-3">
-                    <strong class="d-inline-block mb-2 text-primary">twitter</strong>
-                    <h4 class="mb-0">twitter</h4>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -41,12 +37,12 @@
                     <div class="card-body d-flex flex-column align-items-start">
                         {% if job.category == 'Experience'%}
                             <strong class="d-inline-block mb-2 text-warning">{{ job.category }}</strong>
-                        {% endif %}
-                        {% if job.category == 'Education'%}
+                        {% elif job.category == 'Education'%}
                             <strong class="d-inline-block mb-2 text-primary">{{ job.category }}</strong>
-                        {% endif %}
-                        {% if job.category == 'Internship'%}
+                        {% elif job.category == 'Internship'%}
                             <strong class="d-inline-block mb-2 text-success">{{ job.category }}</strong>
+                        {% else %}
+                            <strong class="d-inline-block mb-2 text-danger">{{ job.category }}</strong>
                         {% endif %}
 
                         <h2 class="mb-0">{{ job.title }}</h2>
@@ -60,6 +56,184 @@
         </div>
 
     {% else %}
+
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>User</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body d-flex ">
+                            <div class="col-md-12">
+                    <h2>{{ me.name }}</h2>
+                    <h3>{{ me.email }}</h3>
+                    <h3>{{ me.phone }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body d-flex ">
+                            <div class="col-md-12">
+                                <form method="POST" action="{{url_for('updateme')}}">
+                                    <div class="mb-3">
+                                        <label>Update me !</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">name</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newname">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">e-mail</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newemail">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">phone</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newphone">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+
+                                            <input type="hidden" value='update' name="update">
+                                            <input type="hidden" name="mode" value="1">
+                                            <button class="btn btn-success btn-lg btn-block" type="submit" name="action" value="update">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Social</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body d-flex ">
+                            <div class="col-md-12">
+                                <form method="POST" action="{{ url_for('socialadd') }}" >
+
+                                    <div class="mb-3">
+                                        <label>New network !</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">network</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newname">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">username</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newusrname">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">url</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="newurl">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="hidden" value='update' name="update">
+                                            <input type="hidden" name="mode" value="1">
+                                            <button class="btn btn-success btn-lg btn-block" type="submit" name="action" value="update">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% for socialnet in socialnets %}
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body d-flex ">
+                            <div class="col-md-12">
+                                <form method="POST" action="{{url_for('socialupdate')}}">
+
+                                    <div class="mb-3">
+                                        <label>Edit {{ socialnet.name }}</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">network</span>
+                                            </div>
+                                            <input type="text" class="form-control" value='{{ socialnet.name }}' name="newname">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">username</span>
+                                            </div>
+                                            <input type="text" class="form-control" value='{{ socialnet.username }}' name="newusername">>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">url</span>
+                                            </div>
+                                            <input type="text" class="form-control" value='{{ socialnet.url }}' name="newurl">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="hidden" value='{{ socialnet.id }}' name="id">
+                                            <input type="hidden" value='delete' name="delete">
+                                            <input type="hidden" name="mode" value="1">
+                                            <button class="btn btn-danger btn-lg btn-block" type="submit" name="action" value="delete">Delete</button>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <input type="hidden" value='{{ socialnet.id }}' name="id">
+                                            <input type="hidden" value='update' name="update">
+                                            <input type="hidden" name="mode" value="1">
+                                            <button class="btn btn-success btn-lg btn-block" type="submit" name="action" value="update">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
 
         <div class="row">
         {% for job in jobs %}
@@ -80,7 +254,7 @@
                         </div>
 
                         <div class="col-md-8">
-                            <form method="POST" action="{{url_for('update')}}">
+                            <form method="POST" action="{{url_for('updateitem')}}">
                                 <div class="mb-3">
                                     <label>Category</label>
                                     <input type="text" class="form-control" value='{{ job.category }}' name="newcategory">

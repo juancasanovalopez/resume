@@ -9,8 +9,8 @@
 # export FLASK_PP=resume.py
 
 from app import app, db
-from app.models import Job, Me
+from app.models import Job, Me, Socialnet
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'Job': Job, 'Me': Me}
+    return {'db': db, 'Job': Job, 'Me': Me, 'Socialnet': Socialnet}
