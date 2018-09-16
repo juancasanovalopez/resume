@@ -3,6 +3,7 @@
 __pycache__
 matrix
 matrix_u
+migrations
 .DS_Store
 app.db
 migrations
