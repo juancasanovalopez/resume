@@ -8,6 +8,8 @@
 # set FLASK_APP=resume.py
 # export FLASK_PP=resume.py
 
+# matrix\Scripts\activate
+
 from app import app, db
 from app.models import Job, Me, Socialnet
 

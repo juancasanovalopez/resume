@@ -42,7 +42,8 @@ def jobform():
                     subtitle=form.subtitle.data,
                     location=form.location.data,
                     period=form.period.data,
-                    description=form.description.data)
+                    description=form.description.data,
+                    url=form.url.data)
         db.session.add(job)
         db.session.commit()
         flash('Please fill all the fields =)')
@@ -68,6 +69,7 @@ def updateitem():
         newsubtitle = request.form['newsubtitle']
         newlocation = request.form['newlocation']
         newperiod = request.form['newperiod']
+        newurl = request.form['newurl']
         newdescription = request.form['newdescription']
 
         # Update row with the new data
@@ -76,6 +78,7 @@ def updateitem():
         job.subtitle = newsubtitle
         job.location = newlocation
         job.period = newperiod
+        job.url = newurl
         job.description = newdescription
 
         db.session.commit()

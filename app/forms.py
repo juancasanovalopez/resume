@@ -9,4 +9,5 @@ class JobPostForm(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     period = StringField('Period', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
+    url = StringField('url', validators=[DataRequired()])
     submit = SubmitField('+')

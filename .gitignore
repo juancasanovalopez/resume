@@ -5,3 +5,4 @@ matrix
 /static
 .DS_Store
 app.db
+/migrations
