@@ -10,8 +10,7 @@
 
 {% block styles %}
   {{super()}}
-  <link rel="stylesheet"
-    href="{{url_for('.static', filename='css/bootstrap.min.css')}}">
+
   <link rel="stylesheet"
     href="{{url_for('.static', filename='css/fullscreen.css')}}">
   <link rel="stylesheet"
@@ -19,13 +18,15 @@
 {% endblock %}
 
 {% block scripts %}
-  <script src="{{url_for('.static', filename='js/bootstrap.min.js')}}">
-  </script>
   {{super()}}
 {% endblock %}
 
 {% block navbar %}
-  <body>
+  <body style="background: url(static/img/00001.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
 
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -50,6 +51,8 @@
 
         {# application content needs to be provided in the app_content block #}
       </div>
+
+
       </body>
 
 {% endblock %}

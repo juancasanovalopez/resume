@@ -3,10 +3,23 @@
 
 {% block content %}
 <div class="inner-cover fixed-bottom">
-
-<div class="d-inline-flex p-2 flex-row-reverse">
-
+  <div class="d-inline-flex p-2 flex-row-reverse">
     <div class="col-md-5">
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
+</div>
+
       <h1 class="cover-heading">Cover your page.</h1>
       <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own. Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own. Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own. Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
       </p>
@@ -20,7 +33,7 @@
       </p>
 
     </div>
-</div>
+  </div>
 </div>
 
 {% endblock %}
