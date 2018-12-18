@@ -5,7 +5,7 @@ from app import db
 # flask db upgrade
 
 # A model for Positions
-class Job(db.Model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String())
     title = db.Column(db.String())
@@ -16,10 +16,10 @@ class Job(db.Model):
     period = db.Column(db.String(140))
     description = db.Column(db.String(1024))
     url = db.Column(db.String(300))
-    user_id = db.Column(db.Integer, db.ForeignKey('me.id'))
+    #user_id = db.Column(db.Integer, db.ForeignKey('me.id'))
 
     def __repr__(self):
-        return '<Job {}>'.format(self.title)
+        return '<Post {}>'.format(self.title)
 
 # A model for personal info
 class Me(db.Model):
@@ -27,7 +27,7 @@ class Me(db.Model):
     name = db.Column(db.String(60))
     email = db.Column(db.String(40))
     phone = db.Column(db.String(15))
-    posts = db.relationship('Job', backref='author', lazy='dynamic')
+    #posts = db.relationship('Job', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<Me {}>'.format(self.name)

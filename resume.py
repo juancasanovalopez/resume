@@ -6,13 +6,13 @@
 # https://jjude.com/flask-errors/
 
 # set FLASK_APP=resume.py
-# export FLASK_PP=resume.py
+# export FLASK_APP=resume.py
 
 # matrix\Scripts\activate
 
 from app import app, db
-from app.models import Job, Me, Socialnet
+from app.models import Post, Me, Socialnet
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'Job': Job, 'Me': Me, 'Socialnet': Socialnet}
+    return {'db': db, 'Post': Post, 'Me': Me, 'Socialnet': Socialnet}

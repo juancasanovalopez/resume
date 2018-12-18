@@ -1,15 +1,15 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import JobPostForm
-from app.models import Job, Socialnet, Me
+from app.forms import PostForm
+from app.models import Socialnet, Me, Post
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
 def index():
     view = '0'
 
-    cats = Job.query.distinct(Job.category)
-    jobs = Job.query.order_by(Job.category).all()
+    cats = Post.query.distinct(Post.category)
+    posts = Post.query.order_by(Post.category).all()
     socialnets = Socialnet.query.all()
 
     me = Me.query.get(1)
@@ -25,39 +25,39 @@ def index():
 
     return render_template('index.html',
                            title='Home',
-                           jobs=jobs,
+                           posts=posts,
                            mode=mode,
                            cats=cats,
                            socialnets=socialnets,
                            me=me)
 
 # TODO Change to addPosition on next makeup
-@app.route('/jobform', methods=['GET','POST'])
-def jobform():
-    form = JobPostForm()
+@app.route('/postform', methods=['GET','POST'])
+def postform():
+    form = PostForm()
     mode = '3'
     if form.validate_on_submit():
-        job = Job(  category=form.category.data,
+        post = post(  category=form.category.data,
                     title=form.title.data,
                     subtitle=form.subtitle.data,
                     location=form.location.data,
                     period=form.period.data,
                     description=form.description.data,
                     url=form.url.data)
-        db.session.add(job)
+        db.session.add(post)
         db.session.commit()
         flash('Please fill all the fields =)')
         return redirect(url_for('index'))
-    return render_template('jobform.html', title='+', form=form, mode=mode)
+    return render_template('postform.html', title='+', form=form, mode=mode)
 
 
 @app.route("/update", methods=['POST'])
 def updateitem():
-    # Get job id from index.html
-    job_id = request.form['id']
+    # Get post id from index.html
+    post_id = request.form['id']
 
     # Query the DB with the position id to update
-    job = Job.query.filter_by(id=job_id).first()
+    post = Post.query.filter_by(id=post_id).first()
 
     mode = request.form['mode']
 
@@ -73,19 +73,19 @@ def updateitem():
         newdescription = request.form['newdescription']
 
         # Update row with the new data
-        job.category = newcategory
-        job.title = newtitle
-        job.subtitle = newsubtitle
-        job.location = newlocation
-        job.period = newperiod
-        job.url = newurl
-        job.description = newdescription
+        Post.category = newcategory
+        Post.title = newtitle
+        Post.subtitle = newsubtitle
+        Post.location = newlocation
+        Post.period = newperiod
+        Post.url = newurl
+        Post.description = newdescription
 
         db.session.commit()
 
     if request.form['action'] == 'delete':
         # Delete the position row
-        db.session.delete(job)
+        db.session.delete(post)
         db.session.commit()
 
     return redirect(url_for('index',mode=mode))
@@ -93,7 +93,7 @@ def updateitem():
 
 @app.route("/socialupdate", methods=['POST'])
 def socialupdate():
-    # Get job id from index.html
+    # Get post id from index.html
     socialnet_id = request.form['id']
 
     # Query the DB with the position id to update
@@ -134,7 +134,7 @@ def socialadd():
 
 @app.route("/updateme", methods=['POST'])
 def updateme():
-    # Get job id from index.html
+    # Get post id from index.html
     me_id = 1
 
     # Query the DB with the position id to update
@@ -155,8 +155,7 @@ def updateme():
 
     if request.form['action'] == 'delete':
         # Delete the position row
-        db.session.delete(job)
+        db.session.delete(post)
         db.session.commit()
 
     return redirect(url_for('index',mode=mode))
-
